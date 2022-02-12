@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "name": "Instagram hacking",
+  "manifest_version": 3,
+  "description": "...",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
+  "permissions": ["declarativeNetRequest"],
+  "host_permissions": ["https://*.instagram.com/*"]
+}
