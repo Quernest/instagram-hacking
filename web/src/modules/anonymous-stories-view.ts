@@ -41,7 +41,7 @@ const updateBadge = (isAnonymityEnabled: boolean) => {
 // Update badge based on initial state
 updateBadge(isEnabled);
 
-// Update badge by clicking on the extension icon
+// Update badge view & state by clicking on the extension icon
 browser.action.onClicked.addListener(() => {
   isEnabled = !isEnabled;
   updateBadge(isEnabled);
