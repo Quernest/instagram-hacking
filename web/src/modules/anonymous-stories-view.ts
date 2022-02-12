@@ -8,18 +8,23 @@ import browser from 'webextension-polyfill';
 
 let isEnabled = true;
 
-const updateBadge = (state: boolean) => {
+const updateBadge = (isAnonymityEnabled: boolean) => {
   const badgeColors = {
     enabled: '#0097ff',
     disabled: '#777',
   };
 
+  const badgeTexts = {
+    on: 'On',
+    off: 'Off',
+  };
+
   browser.action.setBadgeBackgroundColor({
-    color: state ? badgeColors.enabled : badgeColors.disabled,
+    color: isAnonymityEnabled ? badgeColors.enabled : badgeColors.disabled,
   });
 
   browser.action.setBadgeText({
-    text: state ? 'On' : 'Off',
+    text: isAnonymityEnabled ? badgeTexts.on : badgeTexts.off,
   });
 };
 
@@ -41,7 +46,7 @@ browser.declarativeNetRequest.updateDynamicRules({
         urlFilter: '*://*.instagram.com/api/v1/stories/reel/seen*',
       },
       action: {
-        type: 'block',
+        type: isEnabled ? 'allow' : 'block',
       },
     },
   ],
