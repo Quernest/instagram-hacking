@@ -6,8 +6,18 @@ import browser from 'webextension-polyfill';
  * @see https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/
  */
 
+/**
+ * Anonymity state
+ */
 let isEnabled = true;
 
+/**
+ * Updates badge view based on `isEnabled` state using action API.
+ * @see https://developer.chrome.com/docs/extensions/reference/action/#badge
+ *
+ * When anonymity is enabled, the owner of the story
+ * will not know that his story has been viewed.
+ */
 const updateBadge = (isAnonymityEnabled: boolean) => {
   const badgeColors = {
     enabled: '#0097ff',
@@ -28,15 +38,21 @@ const updateBadge = (isAnonymityEnabled: boolean) => {
   });
 };
 
+// Update badge based on initial state
 updateBadge(isEnabled);
 
+// Update badge by clicking on the extension icon
 browser.action.onClicked.addListener(() => {
   isEnabled = !isEnabled;
   updateBadge(isEnabled);
 });
 
+// Each rule must contain its own unique identifier
 const uniqueRuleId = 1;
 
+/**
+ * 🙈 The core method that blocks the Instagram "seen" API request.
+ */
 browser.declarativeNetRequest.updateDynamicRules({
   addRules: [
     {
