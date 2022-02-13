@@ -62,7 +62,7 @@ browser.declarativeNetRequest.updateDynamicRules({
         urlFilter: '*://*.instagram.com/api/v1/stories/reel/seen*',
       },
       action: {
-        type: isEnabled ? 'allow' : 'block',
+        type: isEnabled ? 'block' : 'allow',
       },
     },
   ],
