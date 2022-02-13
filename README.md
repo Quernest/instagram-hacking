@@ -11,5 +11,4 @@ Allows you to view Instagram stories anonymously 🕵️
 3. Click the "Load unpacked" button and select the unzipped folder for your extension to install it
 4. Enable / Disable functionality by clicking on the web extension icon.
 
-On = anonymity enabled
-Off = anonymity disabled
+On = anonymity enabled, Off = anonymity disabled
