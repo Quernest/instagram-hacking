@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "description": "Instagram add-on set",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
     "start": "webpack --watch --config webpack.config.dev.js"
